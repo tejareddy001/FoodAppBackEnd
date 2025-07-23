@@ -30,12 +30,25 @@ public class UserService {
         return "Invalid email or password.";
     }
 
-    public String changePassword(String email, String oldPassword, String newPassword){
-        Optional<User> user = userRepository.findByEmail(email);
-        if(user.isPresent()){
-
+    public String changePassword(String email, String oldPassword, String newPassword) {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            if (user.getPassword().equals(oldPassword)) {
+                user.setPassword(newPassword);
+                userRepository.save(user);
+                return "Password changed successfully";
+            }
         }
-            return "Invalid email or old password";
+        return "Invalid email or old password";
     }
 
+    public String forgotPassword(String email, String phoneNumber){
+        Optional<User> optionaluser = userRepository.findByPhoneNumber(phoneNumber);
+        if(optionaluser.isPresent()){
+           User user = optionaluser.get();
+           return user.getPassword();
+        }
+        return "user does not exist";
+    }
 }

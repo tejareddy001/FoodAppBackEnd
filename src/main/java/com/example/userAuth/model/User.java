@@ -16,6 +16,13 @@ public class User {
 
     private String password;
 
+    private String phoneNumber;
+
+    private  String gender;
+
+    @Transient
+    private String newPassword;
+
     // Getters & Setters
 
     public Long getId() {
@@ -50,5 +57,24 @@ public class User {
         this.password = password;
     }
 
+    public void setPhoneNumber(String phoneNumber){
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPhoneNumber(){
+        return phoneNumber;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public String getGender(){
+        return gender;
+    }
+
+    public  void setGender(String gender){
+        this.gender = gender;
+    }
 
 }

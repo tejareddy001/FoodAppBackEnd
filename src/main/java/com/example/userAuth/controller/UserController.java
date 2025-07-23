@@ -25,7 +25,11 @@ public class UserController {
 
     @PostMapping("/changePassword")
     public String changePassword(@RequestBody User changePassword) {
-        return userService.changePassword(changePassword.getEmail(), changePassword.getPassword(), );
+        return userService.changePassword(changePassword.getEmail(), changePassword.getPassword(), changePassword.getNewPassword());
+    }
+    @PostMapping("/forgotPassword")
+    public String forgotPassword(@RequestBody User forgotPassword){
+        return  userService.forgotPassword(forgotPassword.getEmail(), forgotPassword.getPhoneNumber());
     }
 
 }
