@@ -1,5 +1,4 @@
 package com.example.userAuth.model;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -9,16 +8,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String username;
-
     private String email;
-
     private String password;
-
     private String phoneNumber;
+    private String gender;
+    private String passwordChangedTimeStamp;
 
-    private  String gender;
 
     @Transient
     private String newPassword;
@@ -76,5 +72,14 @@ public class User {
     public  void setGender(String gender){
         this.gender = gender;
     }
+
+    public void setPasswordChangedTimeStamp(String passwordChangedTimeStamp){
+        this.passwordChangedTimeStamp = passwordChangedTimeStamp;
+    }
+
+    public String getPasswordChangedTimeStamp( ){
+        return passwordChangedTimeStamp;
+    }
+
 
 }
