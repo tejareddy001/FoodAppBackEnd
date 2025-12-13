@@ -1,6 +1,8 @@
 package com.example.userAuth.model;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -14,10 +16,11 @@ public class User {
     private String phoneNumber;
     private String gender;
     private String passwordChangedTimeStamp;
+    private String otp;
+    private LocalDateTime otpExpiryTime;
 
 
-    @Transient
-    private String newPassword;
+
 
     // Getters & Setters
 
@@ -59,10 +62,6 @@ public class User {
 
     public String getPhoneNumber(){
         return phoneNumber;
-    }
-
-    public String getNewPassword() {
-        return newPassword;
     }
 
     public String getGender(){
